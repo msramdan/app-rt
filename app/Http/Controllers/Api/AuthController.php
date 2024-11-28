@@ -13,12 +13,6 @@ use App\Helpers\JwtHelper;
 
 class AuthController extends Controller
 {
-    /**
-     * Handle login and generate JWT token.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function login(Request $request)
     {
         // Validate the request data

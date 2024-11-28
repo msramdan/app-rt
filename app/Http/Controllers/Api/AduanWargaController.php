@@ -5,26 +5,12 @@ use App\Http\Controllers\Controller;
 use App\Models\AduanWarga;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Tymon\JWTAuth\Facades\JWTAuth;
-use App\Helpers\JwtHelper; // Pastikan helper sudah ditambahkan
+use App\Helpers\JwtHelper;
 use Exception;
 
-class AduanController extends Controller
+class AduanWargaController extends Controller
 {
-    /**
-     * Konstruktor untuk memastikan token tervalidasi.
-     */
-    public function __construct()
-    {
-        // Tidak ada perubahan di konstruktor, validasi token dilakukan di setiap fungsi.
-    }
 
-    /**
-     * Mendapatkan semua aduan.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function getAllAduans(Request $request)
     {
         // Validasi token menggunakan helper

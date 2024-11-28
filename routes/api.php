@@ -3,13 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
-use App\Http\Controllers\Api\AduanController;
-
-
-
-
-
-
+use App\Http\Controllers\Api\AduanWargaController;
+use App\Http\Controllers\Api\KegiatanWargaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('/logout',[AuthController::class, 'logout']);
-Route::get('/aduan', [AduanController::class, 'getAllAduans']);
-Route::post('/aduan', [AduanController::class, 'createAduan']);
+Route::get('/aduan', [AduanWargaController::class, 'getAllAduan']);
+Route::post('/aduan', [AduanWargaController::class, 'createAduan']);
+Route::get('/kegiatan', [KegiatanWargaController::class, 'getAllKegiatan']);
 
