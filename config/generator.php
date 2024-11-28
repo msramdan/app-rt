@@ -91,6 +91,38 @@ return [
             ]
         ],
         [
+            'header' => 'Aduan Warga',
+            'permissions' => [
+                'aduan warga view'
+            ],
+            'menus' => [
+                [
+                    'title' => 'Aduan Warga',
+                    'icon' => '<i data-feather="book"></i>',
+                    'route' => '/aduan-wargas',
+                    'permission' => 'aduan warga view',
+                    'permissions' => [],
+                    'submenus' => []
+                ]
+            ]
+        ],
+        [
+            'header' => 'Kegiatan Warga',
+            'permissions' => [
+                'kegiatan warga view'
+            ],
+            'menus' => [
+                [
+                    'title' => 'Kegiatan Warga',
+                    'icon' => '<i data-feather="list"></i>',
+                    'route' => '/kegiatan-wargas',
+                    'permission' => 'kegiatan warga view',
+                    'permissions' => [],
+                    'submenus' => []
+                ]
+            ]
+        ],
+        [
             'header' => 'Utilities',
             'permissions' => [
                 'role & permission view',

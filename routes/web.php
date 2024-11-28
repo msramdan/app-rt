@@ -37,17 +37,9 @@ Route::prefix('panel')->group(function () {
         Route::resource('setting-apps', SettingAppController::class);
         Route::get('/backup', [BackupController::class, 'index'])->name('backup.index');
         Route::get('/backup/download', [BackupController::class, 'downloadBackup'])->name('backup.download');
-        Route::resource('aduans',AduanController::class)->middleware('auth');
-        Route::controller(AduanController::class)->group(function () {
-            Route::get('/exportAduan', 'exportAduan')->name('exportAduan');
-            Route::put('/aduans/{id}/updateStatus', 'updateStatus')->name('aduans.updateStatus');
-            Route::post('/aduans/{aduan}/comments', 'storeComment')->name('aduans.comments.store');
-        });
-
+        Route::resource('wargas', App\Http\Controllers\WargaController::class)->middleware('auth');
+        Route::resource('aduan-wargas', App\Http\Controllers\AduanWargaController::class)->middleware('auth');
     });
 });
 
-
-
-
-Route::resource('wargas', App\Http\Controllers\WargaController::class)->middleware('auth');
+Route::resource('kegiatan-wargas', App\Http\Controllers\KegiatanWargaController::class)->middleware('auth');

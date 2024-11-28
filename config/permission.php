@@ -184,5 +184,6 @@ return [
         ['group' => 'setting apps', 'access' => ['setting app view', 'setting app edit']],
         ['group' => 'backup', 'access' => ['backup database view']],
         ['group' => 'warga', 'access' => ['warga view', 'warga create', 'warga edit', 'warga delete']],
-    ],
-];
+        ['group' => 'aduan wargas', 'access' => ['aduan warga view', 'aduan warga edit', 'aduan warga delete']],
+  ['group' => 'kegiatan wargas', 'access' => ['kegiatan warga view', 'kegiatan warga create', 'kegiatan warga edit', 'kegiatan warga delete']], 
+		],];
