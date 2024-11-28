@@ -36,16 +36,15 @@
                                                     </div>
                                                     <div class="carousel-inner text-center text-white pb-5">
                                                         <div class="carousel-item active">
-                                                            <p class="fs-15 fst-italic">" Hentikan bullying di sekolah! Semua siswa berhak merasa aman dan nyaman. "</p>
+                                                            <p class="fs-15 fst-italic">" Warga RT berhak merasa aman dan nyaman di lingkungan sekitar. Mari kita jaga keharmonisan bersama! "</p>
                                                         </div>
                                                         <div class="carousel-item">
-                                                            <p class="fs-15 fst-italic">" Laporkan tindakan bullying di sekolah, bersama kita bisa menciptakan lingkungan belajar yang positif. "</p>
+                                                            <p class="fs-15 fst-italic">" Laporkan setiap masalah di lingkungan RT, bersama kita dapat menciptakan lingkungan yang lebih baik. "</p>
                                                         </div>
                                                         <div class="carousel-item">
-                                                            <p class="fs-15 fst-italic">" Jadilah teman yang baik, saling menghormati adalah kunci untuk menghentikan bullying. "</p>
+                                                            <p class="fs-15 fst-italic">" Jadilah warga yang peduli, saling membantu untuk menciptakan lingkungan yang nyaman dan aman. "</p>
                                                         </div>
                                                     </div>
-
                                                 </div>
                                             </div>
                                         </div>
@@ -87,22 +86,7 @@
                                                         <div class="invalid-feedback">{{ $message }}</div>
                                                     @enderror
                                                 </div>
-
-                                                <div class="mb-3">
-                                                    {!! NoCaptcha::display() !!}
-                                                    {!! NoCaptcha::renderJs() !!}
-                                                    @error('g-recaptcha-response')
-                                                        <span class="text-danger" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
                                                 <div class="form-check ">
-                                                    {{-- <div class="float-end">
-                                                        <a href="{{ route('password.request') }}" class="text-muted">Forgot
-                                                            password?</a>
-                                                    </div> --}}
-
                                                     <input class="form-check-input" type="checkbox" value=""
                                                         id="auth-remember-check" onclick="myFunction()">
                                                     <label class="form-check-label" for="auth-remember-check">Show
