@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -24,14 +25,20 @@ class KegiatanWargaController extends Controller
         try {
             $query = KegiatanWarga::query();
 
+            // Apply filter if start_date is provided
             if ($request->has('start_date')) {
                 $query->where('tanggal_kegiatan', '>=', $request->start_date);
             }
 
+            // Apply filter if end_date is provided
             if ($request->has('end_date')) {
                 $query->where('tanggal_kegiatan', '<=', $request->end_date);
             }
 
+            // Order by id in descending order
+            $query->orderBy('id', 'desc');
+
+            // Execute the query to fetch filtered data
             $kegiatans = $query->get();
 
             return response()->json([
@@ -46,5 +53,4 @@ class KegiatanWargaController extends Controller
             ], 500);
         }
     }
-
 }

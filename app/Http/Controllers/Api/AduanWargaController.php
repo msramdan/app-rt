@@ -37,6 +37,9 @@ class AduanWargaController extends Controller
                 $query->where('tanggal', '<=', $request->end_date);
             }
 
+            // Order by id in descending order
+            $query->orderBy('id', 'desc');
+
             // Execute the query to fetch filtered data
             $aduans = $query->get();
 
@@ -52,6 +55,7 @@ class AduanWargaController extends Controller
             ], 500);
         }
     }
+
 
 
 
