@@ -99,7 +99,43 @@
                                 </table>
                             </div>
 
-                            <a href="{{ url()->previous() }}" class="btn btn-secondary">{{ __('Kembali') }}</a>
+                            <div class="d-flex">
+                                <a href="{{ url()->previous() }}" class="btn btn-secondary">{{ __('Kembali') }}</a>&nbsp;
+
+                                <!-- Verifikasi Button -->
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#verifikasiModal">
+                                    {{ __('Verifikasi Warga') }}
+                                </button>
+                            </div>
+
+                            <div class="modal fade" id="verifikasiModal" tabindex="-1" aria-labelledby="verifikasiModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="verifikasiModalLabel">{{ __('Verifikasi Warga') }}</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form id="verifikasi-form" action="{{ route('wargas.verifikasi', $warga->id) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+
+                                                <div class="mb-3">
+                                                    <select name="is_verify" id="is_verify" class="form-select">
+                                                        <option value="Yes" {{ ($warga->is_verify === 'Yes') ? 'selected' : '' }}>{{ __('Yes') }}</option>
+                                                        <option value="No" {{ ($warga->is_verify === 'No') ? 'selected' : '' }}>{{ __('No') }}</option>
+                                                    </select>
+                                                </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Close') }}</button>
+                                            <button type="submit" class="btn btn-primary">{{ __('Simpan') }}</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>

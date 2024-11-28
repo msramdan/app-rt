@@ -2,21 +2,20 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
-    ActivityLogController,
-    AduanController,
+    AduanWargaController,
     DashboardController,
     UserController,
     ProfileController,
     RoleAndPermissionController,
     BackupController,
-    SettingAppController
+    KegiatanWargaController,
+    SettingAppController,
+    WargaController
 };
 
 Route::get('/', function () {
     return redirect()->route('login');
 });
-// Route::get('/', [LandingWebController::class, 'index'])->name('web');
-
 Route::prefix('panel')->group(function () {
     Route::middleware(['auth', 'web'])->group(function () {
         Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -29,9 +28,11 @@ Route::prefix('panel')->group(function () {
         Route::resource('setting-apps', SettingAppController::class);
         Route::get('/backup', [BackupController::class, 'index'])->name('backup.index');
         Route::get('/backup/download', [BackupController::class, 'downloadBackup'])->name('backup.download');
-        Route::resource('wargas', App\Http\Controllers\WargaController::class)->middleware('auth');
-        Route::resource('aduan-wargas', App\Http\Controllers\AduanWargaController::class)->middleware('auth');
-        Route::resource('kegiatan-wargas', App\Http\Controllers\KegiatanWargaController::class)->middleware('auth');
+        Route::resource('wargas', WargaController::class)->middleware('auth');
+        Route::resource('aduan-wargas', AduanWargaController::class)->middleware('auth');
+        Route::resource('kegiatan-wargas', KegiatanWargaController::class)->middleware('auth');
+        Route::put('wargas/{id}/verifikasi', [WargaController::class, 'verifikasi'])->name('wargas.verifikasi');
+
     });
 });
 

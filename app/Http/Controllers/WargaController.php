@@ -7,6 +7,8 @@ use App\Http\Requests\{StoreWargaRequest, UpdateWargaRequest};
 use Yajra\DataTables\Facades\DataTables;
 use Image;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WargaController extends Controller
 {
@@ -189,5 +191,21 @@ class WargaController extends Controller
                 ->route('wargas.index')
                 ->with('error', __("The warga can't be deleted because it's related to another table."));
         }
+    }
+
+    public function verifikasi(Request $request, $id)
+    {
+        // Validate the incoming data
+        $request->validate([
+            'is_verify' => 'required|in:Yes,No',
+        ]);
+
+        // Use the query builder to update the verification status
+        DB::table('wargas')
+            ->where('id', $id)
+            ->update(['is_verify' => $request->input('is_verify')]);
+
+        // Redirect back with a success message
+        return redirect()->route('wargas.show', $id)->with('success', __('Verification status updated successfully.'));
     }
 }

@@ -43,16 +43,8 @@
                                         <td>{{ $kegiatanWarga->judul_kegiatan }}</td>
                                     </tr>
                                     <tr>
-                                        <td class="fw-bold">{{ __('Keteran Kegiatan') }}</td>
+                                        <td class="fw-bold">{{ __('Keterangan Kegiatan') }}</td>
                                         <td>{{ $kegiatanWarga->keterangan_kegiatan }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">{{ __('Created at') }}</td>
-                                        <td>{{ $kegiatanWarga->created_at->format('d/m/Y H:i') }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="fw-bold">{{ __('Updated at') }}</td>
-                                        <td>{{ $kegiatanWarga->updated_at->format('d/m/Y H:i') }}</td>
                                     </tr>
                                 </table>
                             </div>

@@ -37,7 +37,7 @@
                                             <th>#</th>
                                             <th>{{ __('Tanggal Kegiatan') }}</th>
 											<th>{{ __('Judul Kegiatan') }}</th>
-											<th>{{ __('Keteran Kegiatan') }}</th>
+											<th>{{ __('Keterangan Kegiatan') }}</th>
                                             <th>{{ __('Action') }}</th>
                                         </tr>
                                     </thead>
