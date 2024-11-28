@@ -49,3 +49,5 @@ Route::prefix('panel')->group(function () {
 
 
 
+
+Route::resource('wargas', App\Http\Controllers\WargaController::class)->middleware('auth');

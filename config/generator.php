@@ -75,6 +75,22 @@ return [
 
     'sidebars' => [
         [
+            'header' => 'Warga',
+            'permissions' => [
+                'warga view'
+            ],
+            'menus' => [
+                [
+                    'title' => 'Warga',
+                    'icon' => '<i data-feather="users"></i>',
+                    'route' => '/wargas',
+                    'permission' => 'warga view',
+                    'permissions' => [],
+                    'submenus' => []
+                ]
+            ]
+        ],
+        [
             'header' => 'Utilities',
             'permissions' => [
                 'role & permission view',
@@ -124,6 +140,6 @@ return [
                     ]
                 ]
             ]
-        ]
+        ],
     ]
 ];
