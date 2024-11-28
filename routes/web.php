@@ -11,19 +11,11 @@ use App\Http\Controllers\{
     BackupController,
     SettingAppController
 };
-use App\Http\Controllers\LandingWeb\LandingWebController;
 
-Route::get('/web', function () {
-    return redirect()->route('web');
+Route::get('/', function () {
+    return redirect()->route('login');
 });
-Route::get('/', [LandingWebController::class, 'index'])->name('web');
-Route::get('/list', [LandingWebController::class, 'list'])->name('web.list');
-Route::get('/aduans/search', [LandingWebController::class, 'search'])->name('aduans.search');
-Route::get('/detail/{id}', [LandingWebController::class, 'detail'])->name('web.detail');
-Route::get('/form', [LandingWebController::class, 'form'])->name('web.form');
-Route::post('/store', [LandingWebController::class, 'store'])->name('web.store');
-Route::get('/aduan-private', [LandingWebController::class, 'private'])->name('web.private');
-Route::post('/check-aduan', [LandingWebController::class, 'checkAduan'])->name('web.checkAduan');
+// Route::get('/', [LandingWebController::class, 'index'])->name('web');
 
 Route::prefix('panel')->group(function () {
     Route::middleware(['auth', 'web'])->group(function () {
@@ -39,7 +31,7 @@ Route::prefix('panel')->group(function () {
         Route::get('/backup/download', [BackupController::class, 'downloadBackup'])->name('backup.download');
         Route::resource('wargas', App\Http\Controllers\WargaController::class)->middleware('auth');
         Route::resource('aduan-wargas', App\Http\Controllers\AduanWargaController::class)->middleware('auth');
+        Route::resource('kegiatan-wargas', App\Http\Controllers\KegiatanWargaController::class)->middleware('auth');
     });
 });
 
-Route::resource('kegiatan-wargas', App\Http\Controllers\KegiatanWargaController::class)->middleware('auth');

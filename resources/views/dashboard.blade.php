@@ -34,18 +34,18 @@
                                             <div class="flex-grow-1 overflow-hidden">
                                                 <p class="text-uppercase fw-medium text-muted text-truncate mb-0">
                                                     <a href="" style="color: #A8AAB5" role="button"
-                                                        id="btn_work_order_modal">Total Aduan Publik</a>
+                                                        id="btn_work_order_modal">Total Warga</a>
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-end justify-content-between mt-4">
                                             <div>
                                                 <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span class="counter-value"
-                                                        data-target="1"></span></h4>
+                                                        data-target="{{$wargas}}"></span></h4>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-warning rounded fs-3">
-                                                    <i class="mdi mdi-book-multiple"></i>
+                                                    <i data-feather="users"></i>
                                                 </span>
                                             </div>
                                         </div>
@@ -61,19 +61,19 @@
                                             <div class="flex-grow-1 overflow-hidden">
                                                 <p class="text-uppercase fw-medium text-muted text-truncate mb-0">
                                                     <a href="" style="color: #A8AAB5" role="button"
-                                                        id="btn_equipment_modal">Total Aduan Private</a>
+                                                        id="btn_equipment_modal">Total Aduan Warga</a>
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="d-flex align-items-end justify-content-between mt-4">
                                             <div>
                                                 <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span
-                                                        class="counter-value" data-target="1"></span>
+                                                        class="counter-value" data-target="{{$aduan_wargas}}"></span>
                                                 </h4>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-success rounded fs-3">
-                                                    <i class="mdi mdi-book-multiple"></i>
+                                                    <i data-feather="book"></i>
                                                 </span>
                                             </div>
                                         </div>
@@ -89,7 +89,35 @@
                                             <div class="flex-grow-1 overflow-hidden">
                                                 <p class="text-uppercase fw-medium text-muted text-truncate mb-0">
                                                     <a href="" style="color: #A8AAB5" role="button"
-                                                        id="btn_employee_modal">Total Pengguna</a>
+                                                        id="btn_employee_modal">Total Kegiatan Warga</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-end justify-content-between mt-4">
+                                            <div>
+                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span
+                                                        class="counter-value" data-target="{{$kegiatan_wargas}}"></span>
+                                                </h4>
+                                            </div>
+                                            <div class="avatar-sm flex-shrink-0">
+                                                <span class="avatar-title bg-info rounded fs-3">
+                                                    <i data-feather="list"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!-- end col -->
+
+                            <div class="col-xl-3 col-md-6">
+                                <!-- card -->
+                                <div class="card card-animate">
+                                    <div class="card-body">
+                                        <div class="d-flex align-items-center">
+                                            <div class="flex-grow-1 overflow-hidden">
+                                                <p class="text-uppercase fw-medium text-muted text-truncate mb-0">
+                                                    <a href="" style="color: #A8AAB5" role="button"
+                                                        id="btn_vendor_modal">Total User</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -100,36 +128,8 @@
                                                 </h4>
                                             </div>
                                             <div class="avatar-sm flex-shrink-0">
-                                                <span class="avatar-title bg-info rounded fs-3">
-                                                    <i class="fa fa-users" aria-hidden="true"></i>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div><!-- end col -->
-
-                            <div class="col-xl-3 col-md-6">
-                                <!-- card -->
-                                <div class="card card-animate">
-                                    <div class="card-body">
-                                        <div class="d-flex align-items-center">
-                                            <div class="flex-grow-1 overflow-hidden">
-                                                <p class="text-uppercase fw-medium text-muted text-truncate mb-0">
-                                                    <a href="" style="color: #A8AAB5" role="button"
-                                                        id="btn_vendor_modal">Total Peran User</a>
-                                                </p>
-                                            </div>
-                                        </div>
-                                        <div class="d-flex align-items-end justify-content-between mt-4">
-                                            <div>
-                                                <h4 class="fs-22 fw-semibold ff-secondary mb-4"><span
-                                                        class="counter-value" data-target="{{$totalRoles}}"></span>
-                                                </h4>
-                                            </div>
-                                            <div class="avatar-sm flex-shrink-0">
                                                 <span class="avatar-title bg-danger rounded fs-3">
-                                                    <i class="fa fa-cog" aria-hidden="true"></i>
+                                                    <i class="fa fa-users" aria-hidden="true"></i>
                                                 </span>
                                             </div>
                                         </div>
