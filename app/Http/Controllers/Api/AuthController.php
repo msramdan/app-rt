@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Exception;
+use App\Helpers\JwtHelper;
 
 class AuthController extends Controller
 {
@@ -80,34 +81,30 @@ class AuthController extends Controller
         ], 200);
     }
 
-    /**
-     * Logout the user and invalidate the token.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function logout(Request $request)
     {
-        $token = JWTAuth::getToken();
-        if (!$token) {
+        $validation = JwtHelper::validateToken();
+
+        if (!$validation['status']) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Token tidak ditemukan!',
-            ], 400);
+                'message' => $validation['message'],
+            ], $validation['code']);
         }
 
-        $removeToken = JWTAuth::invalidate($token);
+        try {
+            $token = JWTAuth::getToken();
+            JWTAuth::invalidate($token);
 
-        if ($removeToken) {
             return response()->json([
                 'status' => 'success',
                 'message' => 'Logout berhasil!',
             ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Terjadi kesalahan saat logout!',
+            ], 500);
         }
-
-        return response()->json([
-            'status' => 'error',
-            'message' => 'Logout gagal!',
-        ], 500);
     }
 }

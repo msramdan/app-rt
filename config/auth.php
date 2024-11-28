@@ -40,11 +40,6 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
-        'api' => [
-            'driver' => 'jwt',  // Gunakan driver 'jwt' jika menggunakan JWTAuth
-            'provider' => 'wargas',  // Provider ini harus disesuaikan dengan model 'Warga'
-        ],
     ],
 
     /*
@@ -68,11 +63,6 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
-        ],
-
-        'wargas' => [
-            'driver' => 'eloquent',  // Gunakan eloquent driver
-            'model' => App\Models\Warga::class,  // Mengarah ke model Warga
         ],
     ],
 
