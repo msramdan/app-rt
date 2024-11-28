@@ -19,7 +19,7 @@ class WargaSeeder extends Seeder
             [
                 'nama' => 'Ahmad Fauzi',
                 'no_kk' => '1234567890123456',
-                'nik' => '1234567890123456',
+                'nik' => '123',
                 'agama' => 'Islam',
                 'jenis_kelamin' => 'Laki-Laki',
                 'tempat_lahir' => 'Jakarta',
@@ -30,7 +30,7 @@ class WargaSeeder extends Seeder
                 'alamat_lengkap' => 'Jl. Merdeka No. 1, Jakarta',
                 'kartu_keluarga' => '1234567890',
                 'is_verify' => 'Yes',
-                'password' => bcrypt('password123'),
+                'password' => bcrypt('123'),
                 'created_at' => now(),
                 'updated_at' => now(),
             ],

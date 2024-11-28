@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
@@ -11,7 +12,7 @@ use Exception;
 class AduanWargaController extends Controller
 {
 
-    public function getAllAduans(Request $request)
+    public function getAllAduan(Request $request)
     {
         // Validasi token menggunakan helper
         $validation = JwtHelper::validateToken();
@@ -24,8 +25,20 @@ class AduanWargaController extends Controller
         }
 
         try {
-            // Ambil semua data aduan
-            $aduans = AduanWarga::paginate(10); // Pagination default 10 per halaman
+            $query = AduanWarga::query();
+
+            // Apply filter if start_date is provided
+            if ($request->has('start_date')) {
+                $query->where('tanggal', '>=', $request->start_date);
+            }
+
+            // Apply filter if end_date is provided
+            if ($request->has('end_date')) {
+                $query->where('tanggal', '<=', $request->end_date);
+            }
+
+            // Execute the query to fetch filtered data
+            $aduans = $query->get();
 
             return response()->json([
                 'status' => 'success',
@@ -39,6 +52,8 @@ class AduanWargaController extends Controller
             ], 500);
         }
     }
+
+
 
     /**
      * Membuat aduan baru (complaint).

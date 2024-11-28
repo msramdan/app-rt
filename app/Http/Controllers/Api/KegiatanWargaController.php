@@ -22,7 +22,17 @@ class KegiatanWargaController extends Controller
         }
 
         try {
-            $kegiatans = KegiatanWarga::paginate(10);
+            $query = KegiatanWarga::query();
+
+            if ($request->has('start_date')) {
+                $query->where('tanggal_kegiatan', '>=', $request->start_date);
+            }
+
+            if ($request->has('end_date')) {
+                $query->where('tanggal_kegiatan', '<=', $request->end_date);
+            }
+
+            $kegiatans = $query->get();
 
             return response()->json([
                 'status' => 'success',
@@ -36,4 +46,5 @@ class KegiatanWargaController extends Controller
             ], 500);
         }
     }
+
 }
