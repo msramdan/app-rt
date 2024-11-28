@@ -18,7 +18,7 @@ class AuthController extends Controller
         // Validate the request data
         $validator = Validator::make($request->all(), [
             'nik' => 'required|string',
-            'password' => 'required|string|min:6',
+            'password' => 'required|string',
         ]);
 
         if ($validator->fails()) {
