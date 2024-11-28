@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(SettingAppSeeder::class);
         $this->call(WargaSeeder::class);
         $this->call(AduanWargaSeeder::class);
+        $this->call(KegiatanWargaSeeder::class);
     }
 }

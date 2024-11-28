@@ -25,7 +25,7 @@
                     <div class="card-header">
                             @can('kegiatan warga create')
                                 <a href="{{ route('kegiatan-wargas.create') }}" class="btn btn-md btn-primary"> <i
-                                        class="mdi mdi-plus"></i> {{ __('Create a new kegiatan warga') }}</a>
+                                        class="mdi mdi-plus"></i> Tambah</a>
                             @endcan
                         </div>
 
