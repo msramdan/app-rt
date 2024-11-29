@@ -10,6 +10,10 @@ use Illuminate\Support\Facades\Validator;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Exception;
 use App\Helpers\JwtHelper;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
+
 
 class AuthController extends Controller
 {
@@ -101,4 +105,79 @@ class AuthController extends Controller
             ], 500);
         }
     }
+
+    public function register(Request $request)
+    {
+        // Validate the request data
+        $validator = Validator::make($request->all(), [
+            'nama' => 'required|string',
+            'no_kk' => 'required|string',
+            'nik' => 'required|string|unique:wargas',
+            'agama' => 'required|in:Islam,Kristen Protestan,Kristen Katolik,Hindu,Buddha,Konghucu',
+            'jenis_kelamin' => 'required|in:Laki-Laki,Perempuan',
+            'tempat_lahir' => 'required|string',
+            'tanggal_lahir' => 'required|date',
+            'status_kawin' => 'required|in:Belum Kawin,Kawin,Cerai Hidup,Cerai Mati',
+            'golongan_darah' => 'required|in:A,B,AB,O',
+            'pekerjaan' => 'required|string',
+            'alamat_lengkap' => 'required|string',
+            'kartu_keluarga' => 'nullable|file|mimes:jpeg,png,pdf|max:10240', // Nullable field
+            'password' => 'required|string|min:6',
+        ]);
+
+        // If validation fails
+        if ($validator->fails()) {
+            return response()->json([
+                'status' => 'error',
+                'message' => $validator->errors(),
+            ], 400);
+        }
+
+        // Handle file upload if available
+        $filePath = null;
+        if ($request->hasFile('kartu_keluarga')) {
+            $file = $request->file('kartu_keluarga');
+            // Generate a unique name for the file
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            // Store the file in the local storage folder
+            $filePath = $file->storeAs('uploads/kartu-keluargas', $fileName, 'public');
+        }
+
+        // Insert user data into the database
+        try {
+            $wargaId = DB::table('wargas')->insertGetId([
+                'nama' => $request->nama,
+                'no_kk' => $request->no_kk,
+                'nik' => $request->nik,
+                'agama' => $request->agama,
+                'jenis_kelamin' => $request->jenis_kelamin,
+                'tempat_lahir' => $request->tempat_lahir,
+                'tanggal_lahir' => $request->tanggal_lahir,
+                'status_kawin' => $request->status_kawin,
+                'golongan_darah' => $request->golongan_darah,
+                'pekerjaan' => $request->pekerjaan,
+                'alamat_lengkap' => $request->alamat_lengkap,
+                'kartu_keluarga' => $filePath, // Store the file path in the database (nullable)
+                'password' => Hash::make($request->password), // Hash the password
+                'is_verify' => 'No', // Default to No for unverified accounts
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Gagal menyimpan data warga: ' . $e->getMessage(),
+            ], 500);
+        }
+
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Pendaftaran berhasil',
+            'data' => [
+                'warga_id' => $wargaId,
+            ],
+        ], 200);
+    }
+
+
 }

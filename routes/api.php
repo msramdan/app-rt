@@ -29,6 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'cors'], function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/register', [AuthController::class, 'register']);
     Route::get('/aduan', [AduanWargaController::class, 'getAllAduan']);
     Route::post('/aduan', [AduanWargaController::class, 'createAduan']);
     Route::get('/kegiatan', [KegiatanWargaController::class, 'getAllKegiatan']);
